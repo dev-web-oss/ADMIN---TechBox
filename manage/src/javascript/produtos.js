@@ -97,8 +97,6 @@ export async function adicionarProduto(form) {
     descricao: form.addDescricao.value.trim(),
     preco: parseFloat(form.addPreco.value),
     precoPromocional: parseFloat(form.addPrecoPromo.value) || 0,
-    precoAtacado: parseFloat(form.addPrecoAtacado.value) || 0,
-    precoPromoAtacado: parseFloat(form.addPrecoPromoAtacado.value) || 0,
     ...imagens
   };
 
