@@ -10,16 +10,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 import { uploadImagemParaAppwrite, processarImagensFormulario } from "./appwriteConfig.js";
 
-const categorias = [
-  "CestasKits",
-  "CorpoBanho",
-  "Infantil",
-  "Mahogany",
-  "PerfumariaMasculina",
-  "PerfumariaNaturaFeminina",
-  "ProdutosMasculinos"
-];
-
 function configurarComportamentoInputsImagem(formPrefixo) {
   [1, 2, 3, 4, 5].forEach(n => {
     const campoUrl = document.getElementById(`${formPrefixo}Imagem${n}_url`);
@@ -107,6 +97,8 @@ export async function adicionarProduto(form) {
     descricao: form.addDescricao.value.trim(),
     preco: parseFloat(form.addPreco.value),
     precoPromocional: parseFloat(form.addPrecoPromo.value) || 0,
+    precoAtacado: parseFloat(form.addPrecoAtacado.value) || 0,
+    precoPromoAtacado: parseFloat(form.addPrecoPromoAtacado.value) || 0,
     ...imagens
   };
 
