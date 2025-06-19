@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Painel de Administração</title>
+    <link rel="stylesheet" href="./login/style/login.css" />
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
+
+    <script defer src="login/src/login.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login com E-mail e Senha</h2>
+      <input type="email" id="email" placeholder="Seu e-mail" />
+      <input type="password" id="senha" placeholder="Sua senha" />
+      <button id="loginBtn">Entrar</button>
+      <p id="erro-mensagem"></p>
+    </div>
+  </body>
+</html>

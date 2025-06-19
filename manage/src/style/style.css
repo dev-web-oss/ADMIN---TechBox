@@ -1,0 +1,34 @@
+@import url("header.css");
+@import url("manage.css");
+@import url("produto.css");
+@import url("avaliacoes.css");
+@import url("formProduto.css");
+
+
+:root {
+  --color-primary-1: #ffffff; /* Branco */
+  --color-primary-2: #f0f0f0; /* Cinza muito claro */
+  --color-primary-3: #dddddd; /* Cinza médio */
+  --color-primary-4: #000000; /* Preto */
+  --color-primary-5: #ffe348; /* Amarelo vibrante (dourado) */
+  --color-primary-6: #f2ce01; /* Amarelo escuro (hover ou variação) */
+
+  --color-neutral-0: #ffec80; /* Fundo neutro */
+  --color-neutral-1: #2e2e2e; /* Preto suave para texto */
+  --color-neutral-2: #1a1a1a; /* Preto mais forte */
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-primary-1);
+}

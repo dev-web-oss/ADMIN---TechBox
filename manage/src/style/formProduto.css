@@ -1,0 +1,160 @@
+.painel-edicao {
+  background-color: transparent;
+}
+
+.conteudo-edicao {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background-color: var(--color-primary-2);
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+}
+
+/* Grupos de campo (rótulo, input e preview) */
+.field-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.field-group label {
+  flex-shrink: 0;
+  width: 6rem;
+  font-weight: 600;
+}
+
+.field-group input[type="text"],
+.field-group input[type="number"],
+.field-group textarea {
+  flex: 1;
+}
+
+/* Preview das imagens ao lado do input */
+.field-group .img-preview {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-primary-4);
+  border-radius: 0.5rem;
+  object-fit: cover;
+  background-color: var(--color-primary-1);
+}
+
+/* Aplica-se a cada .imagem-group */
+.imagem-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto; /* duas colunas iguais + a coluna do preview */
+  column-gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Cada label continue alinhado acima, se quiser */
+.imagem-group > label {
+  grid-column: 1 / -1; /* label ocupa toda a largura do grid */
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+/* Inputs de URL e file já irão para as colunas 1 e 2 automaticamente */
+/* Se precisar de estilos específicos: */
+.imagem-group .imagem-url,
+.imagem-group .imagem-file {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Preview: fica na terceira coluna */
+.imagem-group .img-preview {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border: 1px solid var(--color-primary-4);
+  border-radius: 0.25rem;
+}
+
+
+
+
+/* Estilização geral do formulário */
+#form-edicao-produto {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#form-edicao-produto button {
+  width: max-content;
+  align-self: flex-end;
+  margin-top: 1rem;
+}
+
+#form-edicao-produto button[type="submit"] {
+  background-color: var(--color-primary-5);
+  color: var(--color-neutral-2);
+}
+
+#fechar-edicao {
+  background-color: var(--color-neutral-1);
+  color: var(--color-primary-1);
+}
+
+/* Botão tipo toggle switch */
+.switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1.8rem;
+}
+
+.switch-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-neutral-1, #ccc);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider-toggle:before {
+  position: absolute;
+  content: "";
+  height: 1.4rem;
+  width: 1.4rem;
+  left: 0.2rem;
+  bottom: 0.2rem;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Quando está ligado */
+.switch-toggle input:checked + .slider-toggle {
+  background-color: var(--color-primary-5, #2196F3);
+}
+
+.switch-toggle input:checked + .slider-toggle:before {
+  transform: translateX(4rem);
+}
+
+.hidden { display: none; }
+.painel {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+}
+.painel-content {
+  background: white; padding:1.5rem; border-radius:0.5rem; width: 90%; max-width: 500px;
+}
+.actions { margin: 1rem 0; }
+.btn { padding:0.5rem 1rem; margin-right:0.5rem; cursor:pointer; }
+.btn.danger { background: #c00; color:#fff; }

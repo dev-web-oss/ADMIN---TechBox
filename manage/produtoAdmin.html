@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos - ADM Jana</title>
+    <link rel="stylesheet" href="src/style/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+    <script type="module" src="src/javascript/appwriteConfig.js"></script>
+    <script type="module" src="src/javascript/index.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <a href="./manage.html" id="nav_logo">
+          <img
+            src="src/images/logo-TechBox.png"
+            alt="logo da TechBoc"
+            id="logo"
+          />
+        </a>
+      </nav>
+    </header>
+    <section id="menu">
+      <h1 class="section-title">Produtos</h1>
+      <div class="actions">
+        <button id="abrir-add" class="btn-manage">Adicionar Produto</button>
+      </div>
+
+      <div class="field-group">
+        <label for="filtro-categoria">Categoria:</label>
+        <select name="categoria" id="selectCategoria">
+          <option value="">Selecione...</option>
+          <option value="Todos">TODOS</option>
+          <option value="Acessorio">ACESSÓRIOS</option>
+          <option value="Antena">ANTENA</option>
+          <option value="CaboHDMI">CABO HDMI</option>
+          <option value="CaboDeCelular">CABOS DE CELULAR</option>
+          <option value="CaixaDeSom">CAIXA DE SOM</option>
+          <option value="Campainha">CAMPAINHA</option>
+          <option value="CapasDeCelular">CAPAS DE CELULAR</option>
+          <option value="Carregadores">CARREGADORES</option>
+          <option value="CartoesDeMemoria">CARTÕES DE MEMÓRIA</option>
+          <option value="Chaveiros">CHAVEIROS</option>
+          <option value="CoposGarrafas">COPO E GARRAFA</option>
+          <option value="Ferramentas">FERRAMENTAS</option>
+          <option value="FoneDeOuvido">FONE DE OUVIDO</option>
+          <option value="Lanterna">LANTERNA</option>
+          <option value="MaquinaDeCorte">MÁQUINA DE CORTE</option>
+          <option value="Marmita">MARMITA</option>
+          <option value="Massageador">MASSAGEADOR</option>
+          <option value="MiniCompressor">MINI COMPRESSOR</option>
+          <option value="Mouse">MOUSE</option>
+          <option value="Projetores">PROJETORES</option>
+          <option value="Radios">RÁDIOS</option>
+          <option value="RelogioSmartWatch">RELÓGIO SMART WATCH</option>
+          <option value="Suporte">SUPORTE</option>
+          <option value="VideoGame">VIDEO GAME</option>
+        </select>
+      </div>
+
+    <div id="produtos" class="container-produtos"></div>
+
+    <!-- Painel de Edição -->
+    <div id="painel-edicao" class="painel hidden">
+      <div class="painel-content">
+        <h2>Editar Produto</h2>
+        <form id="form-edicao-produto">
+          <div class="field-group">
+            <label for="vendendo">Vendendo</label>
+            <label class="switch-toggle">
+              <input type="checkbox" name="vendendo" id="vendendo" />
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+
+          <div class="field-group">
+            <label for="destaque">Destaque</label>
+            <label class="switch-toggle">
+              <input type="checkbox" name="destaque" id="destaque" />
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+
+          <div class="field-group">
+            <label for="nome">Nome</label>
+            <textarea id="nome" placeholder="Nome" required></textarea>
+          </div>
+
+          <div class="field-group">
+            <label for="descricao">Descrição</label>
+            <textarea
+              id="descricao"
+              placeholder="Descrição"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field-group">
+            <label for="precopreco">Preço</label>
+            <input
+              type="number"
+              id="preco"
+              placeholder="Preço"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="precoPromocional">Preço Promocional</label>
+            <input
+              type="number"
+              id="precoPromocional"
+              placeholder="Preço Promocional"
+              step="0.01"
+            />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 1</label>
+            <input type="text" name="imagem1" id="edImagem1_url" placeholder="URL da imagem" required />
+            <input type="file" id="edImagem1_file" class="imagem-file" accept="image/*" />
+            <img id="preview1" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 2</label>
+            <input type="text" name="imagem2" id="edImagem2_url" placeholder="URL da imagem" />
+            <input type="file" id="edImagem2_file" class="imagem2-file" accept="image/*" />
+            <img id="preview2" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 3</label>
+            <input type="text" name="imagem3" id="edImagem3_url" placeholder="URL da imagem" />
+            <input type="file" id="edImagem3_file" class="imagem3-file" accept="image/*" />
+            <img id="preview3" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 4</label>
+            <input type="text" name="imagem4" id="edImagem4_url" placeholder="URL da imagem" />
+            <input type="file" id="edImagem4_file" class="imagem4-file" accept="image/*" />
+            <img id="preview4" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 5</label>
+            <input type="text" name="imagem5" id="edImagem5_url" placeholder="URL da imagem" />
+            <input type="file" id="edImagem5_file" class="imagem5-file" accept="image/*" />
+            <img id="preview5" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <button type="submit">Salvar Alterações</button>
+          <button type="button" id="fechar-edicao">Cancelar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- PAINEL ADICIONAR (HTML) -->
+    <div id="painel-add" class="painel hidden">
+      <div class="painel-content">
+        <h1>Adicionar Produto</h1>
+        <form id="form-add-produto">
+          <div class="field-group">
+            <select name="categoria" id="categoria">
+              <option value="">Selecione...</option>
+              <option value="Acessorio">ACESSÓRIOS</option>
+              <option value="Acessorio">ACESSÓRIOS</option>
+              <option value="Antena">ANTENA</option>
+              <option value="CaboHDMI">CABO HDMI</option>
+              <option value="CaboDeCelular">CABOS DE CELULAR</option>
+              <option value="CaixaDeSom">CAIXA DE SOM</option>
+              <option value="Campainha">CAMPAINHA</option>
+              <option value="CapasDeCelular">CAPAS DE CELULAR</option>
+              <option value="Carregadores">CARREGADORES</option>
+              <option value="CartoesDeMemoria">CARTÕES DE MEMÓRIA</option>
+              <option value="Chaveiros">CHAVEIROS</option>
+              <option value="CoposGarrafas">COPO E GARRAFA</option>
+              <option value="Ferramentas">FERRAMENTAS</option>
+              <option value="FoneDeOuvido">FONE DE OUVIDO</option>
+              <option value="Lanterna">LANTERNA</option>
+              <option value="MaquinaDeCorte">MÁQUINA DE CORTE</option>
+              <option value="Marmita">MARMITA</option>
+              <option value="Massageador">MASSAGEADOR</option>
+              <option value="MiniCompressor">MINI COMPRESSOR</option>
+              <option value="Mouse">MOUSE</option>
+              <option value="Projetores">PROJETORES</option>
+              <option value="Radios">RÁDIOS</option>
+              <option value="RelogioSmartWatch">RELÓGIO SMART WATCH</option>
+              <option value="Suporte">SUPORTE</option>
+              <option value="VideoGame">VIDEO GAME</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="vendendo">Vendendo</label>
+            <label class="switch-toggle">
+              <input type="checkbox" name="addVendendo" id="vendendo" />
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+
+          <div class="field-group">
+            <label for="destaque">Destaque</label>
+            <label class="switch-toggle">
+              <input type="checkbox" name="addDestaque" id="destaque" />
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+
+          <div class="field-group">
+            <label for="nome">Nome</label>
+            <textarea id="addNome" placeholder="Nome" required></textarea>
+          </div>
+
+          <div class="field-group">
+            <label for="descricao">Descrição</label>
+            <textarea
+              id="descricao" name="addDescricao"
+              placeholder="Descrição"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field-group">
+            <label for="precopreco">Preço</label>
+            <input
+              type="number"
+              id="preco" name="addPreco"
+              placeholder="Preço"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="precoPromocional">Preço Promocional</label>
+            <input
+              type="number"
+              id="precoPromocional" name="addPrecoPromo"
+              placeholder="Preço Promocional"
+              step="0.01"
+            />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 1</label>
+            <input type="text" id="addImagem1_url" name="addImg1" class="imagem-url" placeholder="URL da imagem"/>
+            <input type="file" id="addImagem1_file" class="imagem-file" accept="image/*" />
+            <img id="addPreview1" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 2</label>
+            <input type="text" id="addImagem2_url" name="addImg2" class="imagem-url" placeholder="URL da imagem" />
+            <input type="file" id="addImagem2_file" class="imagem-file" accept="image/*" />
+            <img id="addPreview2" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 3</label>
+            <input type="text" id="addImagem3_url" name="addImg3" class="imagem-url" placeholder="URL da imagem" />
+            <input type="file" id="addImagem3_file" class="imagem-file" accept="image/*" />
+            <img id="addPreview3" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 4</label>
+            <input type="text" id="addImagem4_url" name="addImg4" class="imagem-url" placeholder="URL da imagem" />
+            <input type="file" id="addImagem4_file" class="imagem-file" accept="image/*" />
+            <img id="addPreview4" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <div class="field-group imagem-group">
+            <label>Imagem 5</label>
+            <input type="text" id="addImagem5_url" name="addImg5" class="imagem-url" placeholder="URL da imagem" />
+            <input type="file" id="addImagem5_file" class="imagem-file" accept="image/*" />
+            <img id="addPreview5" class="img-preview" src="" alt="Não tem" />
+          </div>
+
+          <button type="submit">Salvar</button>
+          <button type="button" id="fechar-add">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
