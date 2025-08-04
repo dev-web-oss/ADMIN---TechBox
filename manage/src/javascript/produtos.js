@@ -118,7 +118,7 @@ export function abrirPainelAdd() {
 
 export async function carregarProdutosPorCategoria(container, categoriaSelecionada) {
   container.innerHTML = "";
-  const categorias = ["Acessorio","Antena","CaboHDMI","CaboDeCelular","CaixaDeSom","Campainha","CapasDeCelular","Carregadores","CartoesDeMemoria","Chaveiros","CoposGarrafas","Ferramentas","FoneDeOuvido","Lanterna", "Marmita","Massageador","MiniCompressor","Mouse","Pilha","Projetores","Radios","RelogioSmartWatch","Tvbox","Suporte","VideoGame"];
+  const categorias = ["Acessorio","Antena","CaboHDMI","CaboDeCelular","CaixaDeSom","Campainha","CapasDeCelular","Carregadores","CartoesDeMemoria","Chaveiros","CoposGarrafas","Ferramentas","FoneDeOuvido","Gimbal", "Lanterna", "Marmita","Massageador","MiniCompressor","Mouse","Pilha","Projetores","Radios","RelogioSmartWatch","Tvbox","Suporte","VideoGame"];
 
   const categoriasParaBuscar =
     categoriaSelecionada === "Todos" ? categorias : [categoriaSelecionada];
